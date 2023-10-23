@@ -1,12 +1,12 @@
+using Full_GRASP_And_SOLID;
+using System;
 using System.IO;
 
-namespace Full_GRASP_And_SOLID
+public class FilePrinter : IPrinter
 {
-    public class FilePrinter : IPrinter
+    public void PrintRecipe(IRecipeTextProvider recipeTextProvider)
     {
-        public void PrintRecipe(Recipe recipe)
-        {
-            File.WriteAllText("Recipe.txt", recipe.GetTextToPrint());
-        }
+        string recipeText = recipeTextProvider.GetRecipeText();
+        File.WriteAllText("Recipe.txt", recipeText);
     }
 }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class Recipe
+    public class Recipe : IRecipeTextProvider
     {
         // Cambiado por OCP
         private IList<BaseStep> steps = new List<BaseStep>();
@@ -59,6 +59,18 @@ namespace Full_GRASP_And_SOLID
             {
                 result = result + step.GetStepCost();
             }
+
+            return result;
+        }
+        public string GetRecipeText()
+        {
+            string result = $"Receta de {this.FinalProduct.Description}:\n";
+            foreach (BaseStep step in this.steps)
+            {
+                result = result + step.GetTextToPrint() + "\n";
+            }
+
+            result = result + $"Costo de producción: {this.GetProductionCost()}";
 
             return result;
         }

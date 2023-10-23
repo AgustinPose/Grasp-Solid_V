@@ -1,12 +1,12 @@
 using System;
+using Full_GRASP_And_SOLID;
 
-namespace Full_GRASP_And_SOLID
+public class ConsolePrinter : IPrinter
 {
-    public class ConsolePrinter : IPrinter
+    public void PrintRecipe(IRecipeTextProvider recipeTextProvider)
     {
-        public void PrintRecipe(Recipe recipe)
-        {
-            Console.WriteLine(recipe.GetTextToPrint());
-        }
+        string recipeText = recipeTextProvider.GetRecipeText();
+        Console.WriteLine(recipeText);
     }
+
 }
